@@ -14,7 +14,7 @@ function changeColor() {
     event.preventDefault();
     //logging the click event
     console.log(event.target);
-    button.style.backgroundColor = "red";
+    button.style.backgroundColor = "blue";
   });
 }
 //call functions
