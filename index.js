@@ -17,5 +17,18 @@ function changeColor() {
     button.style.backgroundColor = "blue";
   });
 }
+
+const item = document.querySelectorAll("h1");
+//turn the nodelist into an array
+const items = Array.from(item);
+//iterate/loop over array and for each element make the color red
+items.forEach((el) => (el.style.color = "red"));
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((btn) =>
+  btn.addEventListener("click", function (event) {
+    console.log(event.targer.textContent);
+  })
+);
 //call functions
 changeColor();
