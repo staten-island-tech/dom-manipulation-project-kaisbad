@@ -1,7 +1,9 @@
 const DOMSelectors = {
   header: document.querySelector("h1"),
-  descriptiom: document.querySelector(".card-desc"),
-  items: document.querySelector("li"),
+  description: document.querySelector(".card-desc"),
+  card: document.querySelector(".card"),
+  button: document.querySelector(".btn"),
+  form: document.querySelector(".form"),
 };
 
 console.log(DOMSelectors.items);
@@ -14,21 +16,12 @@ function changeColor() {
     event.preventDefault();
     //logging the click event
     console.log(event.target);
-    button.style.backgroundColor = "blue";
   });
 }
 
-const item = document.querySelectorAll("h1");
-//turn the nodelist into an array
-const items = Array.from(item);
-//iterate/loop over array and for each element make the color red
-items.forEach((el) => (el.style.color = "red"));
-
-const buttons = document.querySelectorAll("button");
-buttons.forEach((btn) =>
-  btn.addEventListener("click", function (event) {
-    console.log(event.targer.textContent);
-  })
-);
-//call functions
-changeColor();
+function createCard() {
+  DOMSelectors.form.addEventListener("submit", function (event) {
+    event.preventDefault();
+  });
+}
+createCard();
