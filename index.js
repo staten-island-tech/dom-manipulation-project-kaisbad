@@ -19,9 +19,19 @@ function changeColor() {
   });
 }
 
+const colors = [];
+let colorName;
+let colorImage;
+let colorhex;
+
 function createCard() {
   DOMSelectors.form.addEventListener("submit", function (event) {
     event.preventDefault();
+    let colorName = document.querySelector("#name");
+    let colorImage = document.querySelector("#image");
+    let colorhex = document.querySelector("#hex");
+    insertCard();
+    usertTyped();
   });
 }
 createCard();
