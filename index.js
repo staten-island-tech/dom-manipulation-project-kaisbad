@@ -1,37 +1,44 @@
 const DOMSelectors = {
-  header: document.querySelector("h1"),
-  description: document.querySelector(".card-desc"),
-  card: document.querySelector(".card"),
+  text: document.getElementById("title"),
+  image: document.querySelector("#image"),
+  container: document.querySelector(".container"),
   button: document.querySelector(".btn"),
-  form: document.querySelector(".form"),
+  form: document.querySelector(".formclass"),
 };
-
-console.log(DOMSelectors.items);
-function changeColor() {
-  //find element with querySelector
-  let button = document.querySelector(".btn");
-  //listen for a click even
-  console.log(button);
-  button.addEventListener("click", function (event) {
-    event.preventDefault();
-    //logging the click event
-    console.log(event.target);
-  });
-}
-
-const colors = [];
-let colorName;
-let colorImage;
-let colorhex;
 
 function createCard() {
   DOMSelectors.form.addEventListener("submit", function (event) {
     event.preventDefault();
-    let colorName = document.querySelector("#name");
-    let colorImage = document.querySelector("#image");
-    let colorhex = document.querySelector("#hex");
-    insertCard();
-    usertTyped();
+    const nameInput = DOMSelectors.text.value;
+    const imageInput = DOMSelectors.image.value;
+
+    if (nameInput && imageInput) {
+      insertCard(nameInput, imageInput);
+      clearInputs();
+    } else {
+      alert("fill in both forms");
+    }
   });
+  removeCard();
 }
+
+function insertCard(card, img) {
+  DOMSelectors.container.insertAdjacentHTML(
+    "beforeend",
+    `<div class="card"><h2 class="header">${card}</h2><img src="${img}" class="card-img"><button class="deletebtn" type="button">delete</button></div>`
+  );
+}
+
+function clearInputs() {
+  DOMSelectors.form.reset();
+}
+
+function removeCard() {}
+DOMSelectors.container.addEventListener("click", function (event) {
+  event.preventDefault();
+  if (event.target.classList.contains("deletebtn")) {
+    event.target.closest(".card").remove();
+  }
+});
+
 createCard();
